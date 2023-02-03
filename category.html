@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blossoms Flower Shop</title>
+	<link rel="icon" href="picture/logo.png" type="image">
+	<link rel="stylesheet" type="text/css" href="css/category.css">
+	<link rel="stylesheet" type="text/css" href="css/pic.css">
+	<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".button").click(function(){
+				var value = $(this).attr("data-filter");
+				if (value == "all")
+				{
+					$(".filter").show("1000");
+				}
+				else
+				{
+					$(".filter").not("." + value).hide("1000");
+					$(".filter").filter("." + value).show("1000");
+				}
+				//Add active class
+				$("ul .button").click(function(){
+					$(this).addClass('active').siblings().removeClass('active');
+				})
+			})
+		})
+	</script>
+
+
+
+</head>
+
+<body>
+	
+	<a href="index.html"><img src="picture/logo.png" width="180px" height="100px" align="left"  style="position:absolute; margin-top:-30px; margin-left:20px;">	</a>
+
+	<div class="navbar">
+		<a href="index.html">Home</a>
+		<a class="active" href="category.html">Products</a>
+		<a href="vid.html">Videos</a>
+		<a href="contak.html">Contact Us</a>
+		<a href="adminlogin.html" style="float: right; margin-right: 20px;">Logout</a>
+	</div>
+
+
+
+
+</body>
+</html>

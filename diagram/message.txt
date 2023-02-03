@@ -1,0 +1,55 @@
+<br>
+        <br>
+        <br>
+        <center>
+            <h1>Search Visitors</h1>
+            <div class="container">
+                <form action="" method="POST">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Apartment</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <!--                        <th>Entry Time</th>-->
+                            <!--                        <th>Out Time</th>-->
+                            <th>Handler</th>
+                            <th>Entry Time</th>
+                        </tr>
+                        <!--            </table>-->
+                        <input type="text" name="date" placeholder="Date">
+                        <input type="text" name="time" placeholder="Time">
+                        <input type="submit" class="btn" name="search" value="SEARCH DATA"/><br><br>
+                </form>
+
+                <?php
+                $conn = new mysqli('localhost', 'root', '', 'Visitor Management');
+                if ($conn->connect_error){
+                    die("Connection failed: ". $conn-> connect_error);
+                }
+                if (isset($_POST['search'])){
+
+                    $query = "SELECT name, address, apartment, phone, email, handler, Entry_Time FROM visitor WHERE date = '$_POST[date]' AND Entry_Time = '$_POST[time]'";
+                    $query_run = mysqli_query($conn, $query);
+
+                    while ($r = mysqli_fetch_array($query_run)){
+                        ?>
+                        <tr>
+                            <td><?php echo $r ["name"];?></td>
+                            <td><?php echo $r ["address"];?></td>
+                            <td><?php echo $r ["apartment"];?></td>
+                            <td><?php echo $r ["phone"];?></td>
+                            <td><?php echo $r ["email"];?></td>
+                            <!--                            <td>--><?php //echo $r ["Entry_Time"];?><!--</td>-->
+                            <!--                            <td>--><?php //echo $r ["Out_Time"];?><!--</td>-->
+                            <td><?php echo $r ["handler"];?></td>
+                            <td><?php echo $r ["Entry_Time"];?></td>
+                        </tr>
+                        <?php
+                    }
+                }
+                ?>
+
+
+            </div>
